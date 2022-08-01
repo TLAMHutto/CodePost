@@ -3,7 +3,7 @@ const app = express();
 const bodyParser = require('body-parser');
 const path = require('path');
 const http = require('http');
-
+const api = require('./server/routes/api');
 //parsers
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -12,7 +12,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'dist')));
 
 //Set api routes
-// app.use('/api', api)
+app.use('/api', api)
 
 //Return other routes to Aunger index files
 app.get('*', (req, res) => {
